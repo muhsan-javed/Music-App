@@ -1,10 +1,12 @@
 package com.muhsantech.musicapp
 
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
-import com.muhsantech.musicapp.network.ApiInterface
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.muhsantech.musicapp.adapters.MyAdapter
 import com.muhsantech.musicapp.models.MyData
 import retrofit2.Call
 import retrofit2.Callback
@@ -12,13 +14,16 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 class MainActivity : AppCompatActivity() {
 
+    lateinit var myRecyclerView : RecyclerView
+    lateinit var myAdapter: MyAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        myRecyclerView = findViewById(R.id.recyclerView)
 
         val retrofitBuilder = Retrofit.Builder()
             .baseUrl("https://deezerdevs-deezer.p.rapidapi.com/")
@@ -31,9 +36,14 @@ class MainActivity : AppCompatActivity() {
         retrofitData.enqueue(object : Callback<MyData?> {
             override fun onResponse(call: Call<MyData?>, response: Response<MyData?>) {
                 // If the Api call is a success then this method is executed
-                val dataList = response.body()?.data
-                val textView = findViewById<TextView>(R.id.textView)
-                textView.text = dataList.toString()
+                val dataList = response.body()?.data!!
+//                val textView = findViewById<TextView>(R.id.textView)
+//                textView.text = dataList.toString()
+
+                myAdapter = MyAdapter(this@MainActivity, dataList)
+                myRecyclerView.adapter = myAdapter
+                myRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
+
                 Log.d("TAG: onResponse", "OnResponse: ${response.body()}")
             }
 

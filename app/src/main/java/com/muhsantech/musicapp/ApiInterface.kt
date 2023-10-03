@@ -1,4 +1,4 @@
-package com.muhsantech.musicapp.network
+package com.muhsantech.musicapp
 
 import com.muhsantech.musicapp.models.MyData
 import retrofit2.Call
