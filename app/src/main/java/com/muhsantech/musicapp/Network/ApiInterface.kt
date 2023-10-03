@@ -13,5 +13,5 @@ interface ApiInterface {
     @GET("search")
     fun getData(
         @Query("q") query: String
-    ) : Call<List<MyData>>
+    ) : Call<MyData>
 }
