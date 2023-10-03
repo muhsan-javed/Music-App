@@ -4,8 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
-import com.google.gson.Gson
-import com.muhsantech.musicapp.Network.ApiInterface
+import com.muhsantech.musicapp.network.ApiInterface
 import com.muhsantech.musicapp.models.MyData
 import retrofit2.Call
 import retrofit2.Callback
