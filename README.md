@@ -1,6 +1,6 @@
 # Music-App
 
-### This is a weather app built using Kotlin programming language. The app uses the rapidapi.com Deezer API.
+### This is a Music app built using Kotlin programming language. The app uses the rapidapi.com Deezer API.
 
 # Dependencies
 The app uses the following dependencies:
